@@ -1,0 +1,64 @@
+﻿<Window x:Class="PoolUI.Views.DashboardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PoolUI.Views"
+        mc:Ignorable="d" Height="371" Width="380" WindowStartupLocation="Manual" ResizeMode="NoResize" ShowInTaskbar="False" 
+        Background="#FF3A3F57" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="98*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" FontSize="18" TextAlignment="Center"  Foreground="White" Text="Miner status"/>
+        <Button x:Name="CloseBtn"  Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2" Background="#FF3A3F57" Foreground="White">X</Button>
+        
+        <!--Minerstatus-->
+        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" Text="{Binding MinerStatus}" FontSize="24" Foreground="{Binding MinerStatusColor}"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <!--Hashrate-->
+        <TextBlock Grid.Column="1" Grid.Row="4" FontSize="16" Text="Hashrate" TextAlignment="Center"  Background="#FFD87600" Foreground="White"/>
+        <Border Grid.Column="1" Grid.Row="4" Grid.RowSpan="6" BorderBrush="#FFD87600" BorderThickness="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" FontSize="16" TextAlignment="Center"  Foreground="White"  Text="{Binding ReportedHashrate, StringFormat={}{0} MH/s}"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding CurrentHashrate, StringFormat={}{0} MH/s}"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding AverageHashrate, StringFormat={}{0} MH/s}"/>
+
+        <!--Workers-->
+        <TextBlock Grid.Column="3" Grid.Row="4" FontSize="16" Text="Active Workers" TextAlignment="Center"  Background="#FF069FD8" Foreground="White"/>
+        <Border Grid.Column="3" Grid.Row="4" Grid.RowSpan="6" BorderBrush="#FF069FD8" BorderThickness="2"/>
+        <TextBlock Grid.Column="3" Grid.Row="7" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding ActiveWorkers}"/>
+
+        <!--Shares-->
+        <TextBlock Grid.Column="5" Grid.Row="4" FontSize="16" Text="Shares" TextAlignment="Center"  Background="#FFDC4E3F" Foreground="White" Grid.ColumnSpan="2"/>
+        <Border Grid.Column="5" Grid.Row="4" Grid.RowSpan="6" BorderBrush="#FFDC4E3F" BorderThickness="2" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="5" Grid.Row="6" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding ValidShares}" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="5" Grid.Row="7" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding StaleShares}" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="5" Grid.Row="8" FontSize="16" TextAlignment="Center"  Foreground="White" Text="{Binding InvalidShares}" Grid.ColumnSpan="2"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="10" FontSize="16" TextAlignment="Left" VerticalAlignment="Center" Foreground="White" 
+                   Text="{Binding Unpaid, StringFormat='Unpaid {0} ETH'}" Grid.ColumnSpan="3" />
+        <TextBlock Name="salaryLbl" Grid.Column="4" Grid.Row="10" FontSize="16" TextAlignment="Right" VerticalAlignment="Center" Foreground="White" 
+                    Text="{Binding USDPerMonth, StringFormat='Profit {0}$'}" Grid.ColumnSpan="2" />
+    </Grid>
+</Window>
